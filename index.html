@@ -11,16 +11,55 @@
       <!--<a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>-->
-      
+
+      <!-- ASSETS -->
+      <a-assets>
+        <img id="catfur" src="img/textures/catfur.jpg">
+        <audio id="meowSound" src="src/sounds/meow.mp3">
+      </a-assets>
+
+      <!-- CUSTOM ENTITIES -->
+
       <!-- SKY AND PLANE -->
       <a-sky color="#dbdbff"></a-sky>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       
       <!-- OBJECTS -->
-      <a-torus position="0.1 0.75 -3" color="#fff" arc="360" rotation="-30 -30 0" radius="0.5" radius-tubular="0.1"></a-torus> <!--color="#ffcccc"-->
-      <a-sphere position="0.12 0.75 -3" radius="0.3" rotation="-90 0 0" color="#ffcc99"></a-sphere>
-      
-      
+      <a-entity position="0.1 0.75 -3" id="egg">
+        <a-torus position="0.1 0.75 -3" color="#fff" arc="360" rotation="-30 -30 0" radius="0.5" radius-tubular="0.1"></a-torus>
+        <a-sphere position="0.12 0.75 -3" radius="0.3" rotation="-90 0 0" color="#ffcc99"></a-sphere>
+      </a-entity>
+
+      <a-entity>
+        <a-box id="gradientBox" width="2" height="2" depth="2"
+               position="10 2 -5" rotation="90 90 30" scale="1.25 1.25 1.25"
+               src="#catfur">
+          <a-animation attribute="rotation" begin="spinPlsBox" end="stopSpinningPlsBox" repeat="indefinite" to="45 360 45"></a-animation>
+        </a-box>
+      </a-entity>
+
+      <a-camera position="0 7 5">
+        <a-cursor color="#ff0000" />
+      </a-camera>
+
+      <!-- kool plane for kool kids -->
+      <a-plane position="0 0 7" rotation="-90 0 0" width="6" height="6" color="#31B20E"></a-plane>
+
+      <!-- kool kat for kool kids -->
+      <a-entity id="cat" sound="src: #meowSound; on: mouseenter">
+
+        <a-box id="catbox" src="#catfur" position="0 2 7" depth="3" width="5" height="4"></a-box>
+        <a-cone src="#catfur" position="-1.5 5 7" radius-bottom="0.8" radius-top="0" height="3.5"></a-cone>
+        <a-cone src="#catfur" position="1.5 5 7" radius-bottom="0.8" radius-top="0" height="3.5"></a-cone>
+        <a-ring color="black" position="1.1 2.4 5.4" rotation="0 180 0"
+                theta-start="0" theta-length="180" radius-inner="0.7" radius-outer="1.0"></a-ring>
+        <a-ring color="black" position="-1.1 2.4 5.4" rotation="0 180 0"
+                theta-start="0" theta-length="180" radius-inner="0.7" radius-outer="1.0"></a-ring>
+      </a-entity>
+
     </a-scene>
+
   </body>
+
+  <script src="src/catevents.js"></script>
 </html>
