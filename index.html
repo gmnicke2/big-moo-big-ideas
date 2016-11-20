@@ -16,6 +16,15 @@
       <a-assets>
         <img id="gradient" src="img/gradient.png">
         <img id="galaxy" src="img/galaxy-mirrored-half.png">
+        <img id="catfur" src="img/catfur.jpg">
+
+        <audio id="meowAudio" src="sounds/meow.mp3"></audio>
+        <audio id="palmtrees" src="sounds/Bpm100_C_PalmTrees_Bass.wav"></audio>
+        <audio id="beat100_1" src="sounds/Bpm100_DrumLoop_13.wav"></audio>
+        <audio id="swinger-chords" src="sounds/Bpm100_C_SwingerChords_Synth.wav"></audio>
+        <audio id="ynk" src="sounds/Bpm115_C_YouNeverKnow01_Synth.wav"></audio>
+        <audio id="starbeam" src="sounds/Bpm125_E_StarBeam01_Synth.wav"></audio>
+        <audio id="arp" src="sounds/Bpm145_A_Phantom_Arp01.wav"></audio>
       </a-assets>
       
       <!-- BG -->
@@ -26,11 +35,35 @@
       
       <!-- gradient box -->
       <a-entity>
-        <a-box id="gradientBox" width="2" height="2" depth="2"
-               position="0 2 -5" rotation="90 90 30" scale="1.25 1.25 1.25"
+        <a-dodecahedron id="gradientDodeca" width="2" height="2" depth="2" sound="src: #swinger-chords; on: spinHigherCluster; loop: true"
+               position="-6 3 -5" rotation="90 90 30" scale="1.25 1.25 1.25"
                src="#gradient">
-          <a-animation attribute="rotation" begin="spinPls" end="stopSpinningPls" repeat="indefinite" to="45 360 45"></a-animation>
+          <a-animation attribute="rotation" begin="spinHigherCluster" end="stopSpinHigherCluster" dur="1200" repeat="indefinite" to="45 360 45"></a-animation>
+        </a-dodecahedron>
+      </a-entity>
+
+      <a-entity>
+        <a-octahedron id="gradientOcta" width="2" height="2" depth="2" sound="src: #palmtrees; on: spinHigherCluster; loop: true"
+                        position="3 3 -5" rotation="90 90 30" scale="1.25 1.25 1.25"
+                        src="#gradient">
+          <a-animation attribute="rotation" begin="spinHigherCluster" end="stopSpinHigherCluster" dur="1200" repeat="indefinite" to="45 360 45"></a-animation>
+        </a-octahedron>
+      </a-entity>
+
+      <a-entity>
+        <a-box id="gradientBox" width="1.5" height="1.5" depth="1.5" sound="src: #beat100_1; on: spinHigherCluster; loop: true; volume: 0.75"
+                      position="-1.5 3 2.5" rotation="90 90 30" scale="1.25 1.25 1.25"
+                      src="#gradient">
+          <a-animation attribute="rotation" begin="spinHigherCluster" end="stopSpinHigherCluster" easing="ease-circ" dur="1200" repeat="indefinite" to="45 360 45"></a-animation>
         </a-box>
+      </a-entity>
+
+      <a-entity>
+        <a-sphere id="startSphere" radius="1"
+               position="-1.5 1 -2.5" rotation="90 90 30" scale="1.25 1.25 1.25"
+               src="#gradient" metalness="0.5">
+          <a-animation attribute="rotation" begin="spinHigherCluster" end="stopSpinHigherCluster" dur="2400" repeat="indefinite" to="45 360 45"></a-animation>
+        </a-sphere>
       </a-entity>
       
       <!-- egg -->
@@ -43,25 +76,164 @@
       <a-light type="point" color="#AAA" position="0 5 0"></a-light>-->
 
       <!-- CAMERA -->
-      <a-camera position="0 1.8 0">
+      <a-camera position="0 0 0">
         <a-cursor color="#2E3A87"></a-cursor>
       </a-camera>
-      
+
+      <!-- gradient box -->
+      <a-entity sound="src: #swinger-chords; on: click">
+        <a-box id="gradientBox2"
+               width="2" height="2" depth="2"
+               position="-2.25 0 -7" rotation="90 90 30" scale="1.25 1.25 1.25"
+               src="#gradient" opacity="0.4">
+          <a-animation attribute="rotation" repeat="indefinite" to="45 360 45" direction="alternate"></a-animation>
+          <!--<a-animation attribute="rotation" dur="1750" begin="onClick" end="offClick" repeat="indefinite" to="45 360 45"></a-animation>
+          <a-animation attribute="rotation" dur="1750" begin="offClick" end="offClick" repeat="indefinite" to="45 -360 45"></a-animation>-->
+        </a-box>
+      </a-entity>
+
+      <!-- tetra -->
+      <a-entity sound="src: #ynk; on: click"> <!-- color="#99d6ff" -->
+        <a-tetrahedron id="tetra"
+                       radius="2"
+                       position="-6.25 0 -0.25" rotation="90 15 20"
+                       src="#gradient" opacity="0.4">
+          <a-animation attribute="rotation" repeat="indefinite" to="45 360 45" direction="alternate"></a-animation> <!-- begin="onClick" end="offClick"  -->
+        </a-tetrahedron>
+      </a-entity>
+
+      <!-- sphere -->
+      <a-entity sound="src: #starbeam; on: click"> <!-- color="#99d6ff" -->
+        <a-sphere id="sphr"
+                  radius="1.7"
+                  position="2.5 0 1.5" rotation="0 0 0"
+                  src="#gradient" opacity="0.4">
+          <a-animation attribute="rotation" repeat="indefinite" to="45 360 45" direction="alternate"></a-animation> <!-- begin="onClick" end="offClick"  -->
+        </a-sphere>
+      </a-entity>
+
+      <!-- tknot -->
+      <a-entity sound="src: #arp; autoplay: true; loop: true; volume: 0.7"> <!-- color="#ff80aa"   -->
+        <a-torus-knot id="tknot"
+                      src="#gradient" opacity="0.8"
+                      position="-1.5 7 -0.25" rotation="90 30 -30"
+                      arc="120" p="2" q="5" radius="0.75" radius-tubular="0.1">
+          <a-animation attribute="q" begin="onClick" to="7"></a-animation>
+          <a-animation attribute="q" begin="offClick" to="5"></a-animation>
+          <a-animation attribute="rotation" dur="2700" repeat="indefinite" to="0 360 360"></a-animation>
+          <!--<a-animation attribute="radius" dur="2700" to="1.25" begin="onClick"></a-animation>
+          <a-animation attribute="radius" dur="2700" to="0.75" begin="offClick"></a-animation>-->
+          <a-animation attribute="volume" to="0" begin="animationend"></a-animation>
+        </a-torus-knot>
+
+      </a-entity>
+
+      <!-- kool kat for kool kids -->
+      <a-entity position="100 2 200" id="cat" sound="src: #meowAudio; on: mouseenter">
+
+        <a-box id="catbox" src="#catfur" position="0 2 7" depth="3" width="5" height="4"></a-box>
+        <a-cone src="#catfur" position="-1.5 5 7" radius-bottom="0.8" radius-top="0" height="3.5"></a-cone>
+        <a-cone src="#catfur" position="1.5 5 7" radius-bottom="0.8" radius-top="0" height="3.5"></a-cone>
+        <a-ring color="black" position="1.1 2.4 5.4" rotation="0 180 0"
+                theta-start="0" theta-length="180" radius-inner="0.7" radius-outer="1.0"></a-ring>
+        <a-ring color="black" position="-1.1 2.4 5.4" rotation="0 180 0"
+                theta-start="0" theta-length="180" radius-inner="0.7" radius-outer="1.0"></a-ring>
+      </a-entity>
+
+
     </a-scene>
     
     <!-- SCRIPT -->
     <script>
-    document.querySelector('#gradientBox')
-      .addEventListener('click', function() {
-        if(this.isSpinning != true) {
-            this.isSpinning = true;
-            this.emit('spinPls');
-        } 
-        else {
-          this.isSpinning = false;
-          this.emit('stopSpinningPls');
+
+      var setSpinning = function (entity) {
+        if(entity.isSpinning != true) {
+          entity.isSpinning = true;
+          if(entity.components && entity.components.sound) {entity.components.sound.play();}
+          entity.emit('spinHigherCluster');
         }
-      });
+        else {
+          entity.isSpinning = false;
+          if(entity.components && entity.components.sound) {entity.components.sound.pause();}
+          entity.emit('stopSpinHigherCluster');
+        }
+        return entity;
+      };
+
+      document.querySelector('#gradientDodeca')
+        .addEventListener('click', function() {
+          setSpinning(this);
+        });
+
+      document.querySelector('#gradientOcta')
+        .addEventListener('click', function() {
+          setSpinning(this);
+        });
+
+      document.querySelector('#gradientBox')
+        .addEventListener('click', function() {
+          setSpinning(this);
+        });
+
+      document.querySelector('#startSphere')
+        .addEventListener('click', function() {
+          setSpinning(this);
+          setSpinning(document.querySelector('#gradientBox'));
+          setSpinning(document.querySelector('#gradientOcta'));
+          setSpinning(document.querySelector('#gradientDodeca'));
+        });
+
+      // gradientBox
+      document.querySelector('#gradientBox2')
+              .addEventListener('click', function() {
+                if(this.isOn != true) {
+                  this.isOn = true;
+                  this.emit('onClick');
+                }
+                else {
+                  this.isOn = false;
+                  this.emit('offClick');
+                }
+              });
+
+      // tetra
+      document.querySelector('#tetra')
+              .addEventListener('click', function() {
+                if(this.isOn != true) {
+                  this.isOn = true;
+                  this.emit('onClick');
+                }
+                else {
+                  this.isOn = false;
+                  this.emit('offClick');
+                }
+              });
+
+      // sphere
+      document.querySelector('#sphr')
+              .addEventListener('click', function() {
+                if(this.isOn != true) {
+                  this.isOn = true;
+                  this.emit('onClick');
+                }
+                else {
+                  this.isOn = false;
+                  this.emit('offClick');
+                }
+              });
+
+      // tknot
+      document.querySelector('#tknot')
+              .addEventListener('click', function() {
+                if(this.isOn != true) {
+                  this.isOn = true;
+                  this.emit('onClick');
+                }
+                else {
+                  this.isOn = false;
+                  this.emit('offClick');
+                }
+              });
     </script>
     
   </body>
