@@ -17,8 +17,15 @@
         <img id="gradient" src="img/gradient.png">
         <img id="galaxy" src="img/galaxy-mirrored-half.png">
         <img id="catfur" src="img/catfur.jpg">
+        <img id="dogfur" src="img/pink_fluffy_fur.png">
+        <img id="sprinkles" src="img/sprinkles.jpg">
+        <img id="strawberry" src="img/strawberry-ice-cream.jpg">
+        <img id="vanilla" src="img/vanilla-ice-cream.jpg">
+        <img id="matcha" src="img/matcha-ice-cream.JPG">
+        <img id="waffle" src="img/waffle.jpg">
 
         <audio id="meowAudio" src="sounds/meow.mp3"></audio>
+        <audio id="borkbork" src="sounds/puppy-bark.wav"></audio>
         <audio id="palmtrees" src="sounds/Bpm100_C_PalmTrees_Bass.wav"></audio>
         <audio id="beat100_1" src="sounds/Bpm100_DrumLoop_13.wav"></audio>
         <audio id="swinger-chords" src="sounds/Bpm100_C_SwingerChords_Synth.wav"></audio>
@@ -76,8 +83,8 @@
       <a-light type="point" color="#AAA" position="0 5 0"></a-light>-->
 
       <!-- CAMERA -->
-      <a-camera position="0 0 0">
-        <a-cursor color="#2E3A87"></a-cursor>
+      <a-camera position="-8 2.5 -2">
+        <a-cursor color="#af00ff"></a-cursor>
       </a-camera>
 
       <!-- gradient box -->
@@ -128,8 +135,73 @@
 
       </a-entity>
 
+	  <!-- tiny star orbits -->
+      <!-- CLUSTER 1 -->
+      <!-- <a-entity> color="#99d6ff"
+        <a-sphere id="orbit" 
+                      radius="0.25"
+                      position="3 3 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <a-animation ></a-animation>  begin="onClick" end="offClick"
+        </a-sphere>  
+      </a-entity> -->
+      
+      <!-- tiny star cluster orbits -->
+      <a-entity position="0 10 -10">
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="2.8 4.125 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4.25 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>
+        <a-animation attribute="rotation"
+               dur="7000"
+               fill="forwards"
+               to="360 360 0"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      
+      <!-- CLUSTER 2 -->
+      <a-entity position="0 3 0">
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="2.8 4.125 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4.25 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>
+        <a-animation attribute="rotation"
+               dur="7000"
+               fill="backwards"
+               to="0 360 360"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
       <!-- kool kat for kool kids -->
-      <a-entity position="100 2 200" id="cat" sound="src: #meowAudio; on: mouseenter">
+      <a-entity position="10 2 10" id="cat" sound="src: #meowAudio; on: mouseenter">
 
         <a-box id="catbox" src="#catfur" position="0 2 7" depth="3" width="5" height="4"></a-box>
         <a-cone src="#catfur" position="-1.5 5 7" radius-bottom="0.8" radius-top="0" height="3.5"></a-cone>
@@ -139,7 +211,48 @@
         <a-ring color="black" position="-1.1 2.4 5.4" rotation="0 180 0"
                 theta-start="0" theta-length="180" radius-inner="0.7" radius-outer="1.0"></a-ring>
       </a-entity>
-
+      
+      <!-- DOGEY DOGE for DOGEY PEEPS -->
+      <a-entity position="-10 5 10" rotation="0 45 0" id="dog" sound="src: #borkbork; on: mouseenter">
+        <a-box position="0 0 0" src="#dogfur" height="3" width="5" depth="3"></a-box>
+        <a-ring color="#000" rotation="0 0 0" position="1 0 1.6"
+                theta-start="0" theta-length="180"
+                radius-inner="0.75" radius-outer="1.0"
+                scale="0.7 1 1"></a-ring>
+        <a-ring color="#000" rotation="0 0 0" position="-1 0 1.6"
+                theta-start="0" theta-length="180"
+                radius-inner="0.75" radius-outer="1.0"
+                scale="0.7 1 1"></a-ring>
+        <a-circle color="#ff0055" position="0 -0.5 1.6"
+                  radius="1" theta-start="180" theta-length="180"
+                  scale="0.4 0.7 1"></a-circle>
+        <a-sphere position="-3 -.5 1" rotation="0 0 -7"
+                  radius="1"
+                  src="#dogfur"
+                  scale="0.35 2 1"></a-sphere>
+        <a-sphere position="3 -.5 1" rotation="0 0 7"
+                  radius="1"
+                  src="#dogfur"
+                  scale="0.35 2 1"></a-sphere>
+        <a-sphere></a-sphere>
+      </a-entity>
+      
+      <!-- DONUT -->
+      <a-entity>
+      <a-torus id="donut" radius="1" radius-tubular="0.3" 
+               src="#sprinkles" scale="0.6 0.6 0.6" 
+               position="-7 11 0" rotation="45 45 0"></a-torus>
+      </a-entity>
+      
+      <!-- ICE CREAM --> <!-- position="-8.5 2.5 -14" -->
+      <a-entity id="ice-cream" position="-5.25 2.75 -9.25">
+        <a-sphere color="#e6005c" position="0 1.9 0" radius="0.07"></a-sphere>
+        <a-sphere src="#strawberry" radius="0.35" position="0 1.5 0"></a-sphere>
+        <a-sphere src="#vanilla" radius="0.35" position="0 1 0"></a-sphere>
+        <a-sphere src="#matcha" radius="0.35" position="0 0.5 0"></a-sphere>
+        <a-cone src="#waffle" radius-top="0" radius-bottom="0.325" height="0.95" 
+                position="0 0 0" rotation="0 180 180"></a-cone>
+      </a-entity>
 
     </a-scene>
     
