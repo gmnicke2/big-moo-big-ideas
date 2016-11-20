@@ -77,9 +77,73 @@
           <a-animation attribute="radius" dur="2700" to="0.75" begin="offClick"></a-animation>-->
           <a-animation attribute="volume" to="0" begin="animationend"></a-animation>
         </a-torus-knot>
-        
       </a-entity>
 
+      <!-- tiny star orbits -->
+      <!-- CLUSTER 1 -->
+      <a-entity> <!-- color="#99d6ff" -->
+        <a-sphere id="orbit" 
+                      radius="0.25"
+                      position="3 3 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+      </a-entity>
+      
+      <!-- tiny star cluster orbits -->
+      <a-entity position="0 10 -10">
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="2.8 4.125 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4.25 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>
+        <a-animation attribute="rotation"
+               dur="7000"
+               fill="forwards"
+               to="360 360 0"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      
+      <!-- CLUSTER 2 -->
+      <a-entity position="0 3 0">
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="2.8 4.125 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>  
+        <a-sphere id="orbit-cluster" 
+                      radius="0.15"
+                      position="3 4.25 3" rotation="0 0 0"
+                      color="#fff" opacity="1">
+        <!-- <a-animation ></a-animation>  begin="onClick" end="offClick"  -->
+        </a-sphere>
+        <a-animation attribute="rotation"
+               dur="7000"
+               fill="backwards"
+               to="0 360 360"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      
       
       <!-- egg -->
       <!--
@@ -91,7 +155,8 @@
       
       <!-- LIGHT -->
       <!--<a-light type="spot" color="#fefefe" position="-20 0 0" look-at="a-box"></a-light>
-      <a-light type="point" color="#AAA" position="0 5 0"></a-light>-->
+      <a-light type="point" color="#AAA" position="0 5 0"></a-light>
+      <a-entity light="color: #000; intensity: 1.5"></a-entity>-->
 
       <!-- CAMERA -->
       <a-camera position="-8 2.5 -2">
